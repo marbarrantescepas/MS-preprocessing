@@ -3,13 +3,15 @@ This pipeline is designed for structural MRI preprocessing specifically for stud
 
 ## Overview: 
 
-1. Previous to lesion segmentation:
-2. Lesion segmentation:
-3. Quality Check lesion segmentation:
-4. Lesion filling:
-5. Quality Check lesion filling:
-6. FreeSurfer cross-sectionally:
-7. Quality Check FreeSurfer:
+**1. Previous to lesion segmentation:**
+**2. Lesion segmentation:**
+**3. Quality Check lesion segmentation:**
+**4. Lesion filling:**
+**5. Quality Check lesion filling:**
+**6. FreeSurfer cross-sectionally:**
+**7. Quality Check FreeSurfer:**
+
+## Installation:
    
 ## Usage 
 
