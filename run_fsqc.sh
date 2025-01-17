@@ -1,0 +1,78 @@
+#!/bin/bash
+
+#SBATCH --job-name=fsqc           	#a name for your job
+#SBATCH --mem=4G                        #max memory per node 
+#SBATCH --partition=luna-cpu-short       #using luna queue
+#SBATCH --cpus-per-task=4               #max CPU cores per process
+#SBATCH --time=04:00:00                 #time limit (DD-HH:MM)
+#SBATCH --nice=4000                     #priority jobs 
+#SBATCH --qos=anw-cpu                   
+#SBATCH --output=slurm_logs/slurm-%x.%j_%A_%a.out  #store log files
+#SBATCH --array=1-435%20		# first-last%parallel
+
+#======================================================================
+#                      QC PROGRAMS FREESURFER DATA
+#======================================================================
+
+#@author: mar barrantes cepas
+#@email: m.barrantescepas@amsterdamumc.nl
+#updated: 12 Febuary 2024, works 
+
+# Requirements: 
+# Please install the folowing tool https://github.com/Deep-MI/fsqc
+
+#Please change the following things:
+# - array: change according the number of participants study
+# - conda environment
+# - dir: change your input folder
+# - output: change your output folder
+# - path to the run_fsqc tool
+
+#---------------------------------------------------------------------
+
+# Load modules
+module load FreeSurfer/7.3.2-centos8_x86_64
+module load Anaconda3
+conda activate /home/anw/mbarrantescepas/apps/python-env/env2/ #please modify
+
+# Define paths to data
+curdir=`pwd`
+dir=/data/anw/anw-gold/KNW/m.barrace/programs/programs-bids/derivatives/freesurfer #please modify
+output=/scratch/anw/mbarrantescepas/prograMS/freesurfer_qc #please modify
+
+# To use array parallel processing, you create a .txt file with a list of each subject folder.
+cd ${dir}
+ls -d sub-*/ | sed 's:/.*::' > ${curdir}/subjects-fsqc_${sess}.txt
+subjid=$(sed "${SLURM_ARRAY_TASK_ID}q;d" ${curdir}/subjects-fsqc_${sess}.txt)
+cd ${curdir}
+
+# Run lesion filling for all sessions
+subject_dir=${dir}/${subjid}
+for sessdir in ${subject_dir}/*; do
+
+    echo $sessdir
+    sess=${sessdir##/*/}
+
+    if [ ! -d ${output}/${subjid} ]; then 
+
+        /home/anw/mbarrantescepas/apps/fsqc/fsqc/run_fsqc --subjects_dir ${subject_dir} --output_dir ${output}/${subjid} \
+        --screenshots_overlay none --screenshots-html --screenshots_layout 15 3 \
+        --screenshots_views  x=-65 y=-65 z=-40 x=-60 y=-60 z=-35 x=-50 y=-50 z=-30 x=-40 y=-40 z=-40 x=-30 y=-30 z=-25 x=-20 y=-20 z=-20 \
+        x=-10 y=-10 z=-10 x=0 y=0 z=0 x=10 y=10 z=10 x=20 y=20 z=20 x=30 y=30 z=30 x=40 y=40 z=35 x=50 y=50 z=40 x=50 y=50 z=45 x=60 y=60 z=50
+
+    fi 
+
+done
+conda deactivate 
+
+#---------------------------------------------------------------------
+# References
+#---------------------------------------------------------------------
+
+#Esteban O, Birman D, Schaer M, Koyejo OO, Poldrack RA, Gorgolewski KJ; 2017; MRIQC: Advancing the Automatic Prediction of Image Quality in MRI from Unseen Sites; PLOS ONE 12(9):e0184661; doi:10.1371/journal.pone.0184661.
+
+#Wachinger C, Golland P, Kremen W, Fischl B, Reuter M; 2015; BrainPrint: a Discriminative Characterization of Brain Morphology; Neuroimage: 109, 232-248; doi:10.1016/j.neuroimage.2015.01.032.
+
+#Reuter M, Wolter FE, Shenton M, Niethammer M; 2009; Laplace-Beltrami Eigenvalues and Topological Features of Eigenfunctions for Statistical Shape Analysis; Computer-Aided Design: 41, 739-755; doi:10.1016/j.cad.2009.02.007.
+
+#Potvin O, Mouiha A, Dieumegarde L, Duchesne S, & Alzheimer's Disease Neuroimaging Initiative; 2016; Normative data for subcortical regional volumes over the lifetime of the adult human brain; Neuroimage: 137, 9-20; doi.org/10.1016/j.neuroimage.2016.05.016
