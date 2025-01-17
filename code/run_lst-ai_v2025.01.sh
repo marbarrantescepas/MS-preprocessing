@@ -31,7 +31,7 @@
 #Requirements:
 # 1. Please install lst-ai https://github.com/CompImg/LST-AI, if not
 # already install in your server. 
-#
+
 # 2. Data should be organised in BIDS format, learn more: 
 # https://bids.neuroimaging.io/ 
 
