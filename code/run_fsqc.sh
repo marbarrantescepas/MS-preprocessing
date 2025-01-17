@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=fsqc           	    #a name for your job
+#SBATCH --job-name=fsqc                 #a name for your job
 #SBATCH --mem=4G                        #max memory per node 
 #SBATCH --partition=luna-cpu-short      #using luna queue
 #SBATCH --cpus-per-task=4               #max CPU cores per process
@@ -8,7 +8,7 @@
 #SBATCH --nice=4000                     #priority jobs 
 #SBATCH --qos=anw-cpu                   
 #SBATCH --output=slurm_logs/slurm-%x.%j_%A_%a.out  #store log files
-#SBATCH --array=1-435%20		        #first-last%parallel subj
+#SBATCH --array=1-435%20                #first-last%parallel subj
 
 #======================================================================
 #              VISUAL QUALITY CHECK FREESURFER DATA
