@@ -3,7 +3,7 @@ This pipeline is designed for structural MRI preprocessing specifically for stud
 
 ## Overview: 
 
-1. **Previous to lesion segmentation:**
+1. **Previous to lesion segmentation:** `00_run_preproc-nicms_v2025.01.sh [options/flags]`<br/>
 2. **Lesion segmentation:**
 3. **Quality Check lesion segmentation:**
 4. **Lesion filling:**
