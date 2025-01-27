@@ -1,21 +1,41 @@
 #!/bin/bash
 
-#SBATCH --job-name=preproc       #a convenient name for your job
-#SBATCH --mem=6G                     #max memory per node --> around 3 GB for this task
-#SBATCH --partition=luna-cpu-short    #using luna short queue
-#SBATCH --cpus-per-task=4      	      #max CPU cores per process
-#SBATCH --time=00:15:00                #time limit (DD-HH:MM)
-#SBATCH --nice=4000                   #allow other priority jobs to go first
-#SBATCH --qos=anw-cpu                 #use anw-cpu's
-#SBATCH --array=1-130%20       
+#SBATCH --job-name=preproc       	#a name for your job
+#SBATCH --mem=6G                    	#max memory per node
+#SBATCH --partition=luna-cpu-short    	#using luna short queue
+#SBATCH --cpus-per-task=4      	      	#max CPU cores per process
+#SBATCH --time=00:15:00                	#time limit (DD-HH:MM)
+#SBATCH --nice=4000                   	#allow other priority jobs to go first
+#SBATCH --qos=anw-cpu                 	#use anw-cpu's
+#SBATCH --array=1-XX%YY			#first-last%parallel subj
 #SBATCH --output=slurm_logs/slurm-%x.%j_%A_%a.out
 
+#======================================================================
+#PREPROCESSING PRIOR TO NICMS (N4, SKULL-STRIPPING, flair to T1 space)
+#======================================================================
+
+#@author: mar barrantes cepas
+#@email: m.barrantescepas@amsterdamumc.nl
+#updated; 27 January 2025, works
+#to-do: finish description, change folder structure + name, simplify usage 
+
+#Description: 
+# Input:
+# Output: 
+# Run: 
+
+#Requirements:
+
+#Please modify the following things before running:
+
+#----------------------------------------------------------------------
+
 # Load modules
-module load ANTs/2.4.1                   #for registration and N4 bias field
+module load ANTs/2.4.1                  #for registration and N4 bias field
 
 # Define input directories anc create outputdir
 curdir=`pwd`
-dir=/home/anw/snoteboom/my-scratch/appsms
+dir=/path/to/your/folder
 bidsdir=${dir}/bids_approved
 outputdir=${dir}/nicms
 mkdir -p outputdir
@@ -90,20 +110,5 @@ for sessdir in ${subdir}/*; do
 				fslmaths ${flair_t1} -mas ${brain_mask} ${flair_t1_brain}
 			
 			fi
-
 		fi
-
-
-
 done;
-
-
-
-
-
-
-
-
-
-
-
