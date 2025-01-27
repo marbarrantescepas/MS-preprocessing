@@ -14,7 +14,7 @@
 #PREPROCESSING PRIOR TO NICMS (N4, SKULL-STRIPPING, flair to T1 space)
 #======================================================================
 
-#@author: mar barrantes cepas
+#@author: samantha noteboom, mar barrantes cepas
 #@email: m.barrantescepas@amsterdamumc.nl
 #updated; 27 January 2025, works
 #to-do: finish description, change folder structure + name, simplify usage 
