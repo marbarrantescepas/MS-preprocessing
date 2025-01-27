@@ -1,5 +1,20 @@
 #!/bin/bash
 
+#@author: samantha noteboom, mar barrantes cepas
+#@email: m.barrantescepas@amsterdamumc.nl
+#updated; 27 January 2025, works
+#to-do: finish description, change folder structure + name, simplify usage 
+
+#Description: 
+# Input:
+# Output: 
+# Run: 
+
+#Requirements:
+
+#Please modify the following things before running:
+
+#----------------------------------------------------------------------
 #Input folder
 archive=/home/anw/snoteboom/my-scratch/appsms/nicms
 archive_nicms=/home/anw/snoteboom/my-scratch/appsms/appsms_david_N4
