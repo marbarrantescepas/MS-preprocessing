@@ -4,21 +4,24 @@
 
 #@author: julia r. jelgeruis, lonneke bos, mar barrantes cepas
 #@email: m.barrantescepas@amsterdamumc.nl
-#updated: 17 January 2025, works
-#to-do: generalise for BIDS folders, add ml fsl & slicer, add usage
-#       finish comments
+#updated: 03 February 2025, in process
+#to-do: simplify usage
 
-#Description: 
+#Description: this code is meant to open automatically slicer in order
+# to manually correct the lesion masks obtained in the previous step. 
 # Input: 
 # Output:
 # Run: Slicer --python-script run_slicer_v2025.01.sh [SUBJ_ID] &
 
 # Requirements:
+# 1. Please install FSL and Slicer, if they are not already in your system. 
+
+# 2. Type in the terminal: "ml fsl" and "ml slicer"
+
+# 3. Data should be structured in a determined way, check previous steps.  
 
 #Please modify the following things before running: 
-#
-#
-
+# -BASE : please modify input directory
 #-----------------------------------------------------------------------
 
 # import libraries
@@ -33,7 +36,7 @@ parser.add_argument('subjectID', type=str, help='ID of subject')
 args = parser.parse_args()
 
 # Set base directory
-BASE = "/scratch/anw/ragovaarts/DBL/derivatives2/lst_ai/"
+BASE = "/path/to/your/directory/"  #please modify
 
 # Get arguments
 SUBJ = args.subjectID
