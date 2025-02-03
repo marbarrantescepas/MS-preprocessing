@@ -19,20 +19,23 @@
 #to-do: simplify usage 
 
 #Description: 
-# Input:  
-# Output: 
-# Run: 
+# Input: Lesion mask (corrected) and T1w image. 
+# Output: T1w with lesion filled. 
+# Run: It needs to run lesion segmentation LST-LGA to obtain intermediate
+# files for next lesion filling the T1w. 
 
 #Requirements:
+# 1. Please install lst, https://www.applied-statistics.de/lst.html, if 
+# not already install in your system.
 
 # Please modify the following things before running:
+# -array: change according the number of participants study
+# -projectfolder: change your input folder, needs to be in BIDS format 
 #----------------------------------------------------------------------
 
 # load modules
 module load matlab/R2022b
 module load matlab-toolbox/spm12/r7771
-# module load fsl/6.0.6.5                                 #remove?
-# module load FreeSurfer/7.3.2-centos8_x86_64             #remove? 
 
 # Define input directories anc create outputdir
 curdir=`pwd`
