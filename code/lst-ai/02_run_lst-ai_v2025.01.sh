@@ -37,7 +37,7 @@
 
 #Please modify the following things before running:
 # -array: change according the number of participants study
-# -dir: change your input folder, needs to be in BIDS format 
+# -projectfolder: change your input folder, needs to be in BIDS format 
 
 #----------------------------------------------------------------------
 
