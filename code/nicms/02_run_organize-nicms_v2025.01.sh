@@ -17,17 +17,20 @@
 #@author: samantha noteboom, mar barrantes cepas
 #@email: m.barrantescepas@amsterdamumc.nl
 #updated; 03 February 2025, works
-#to-do: finish description, change folder structure + name, simplify usage 
+#to-do: simplify usage 
 
 #Description: 
-# Input:
-# Output: 
-# Run: 
+# Input: Brain files otained from previous step
+# Output: Folder includying all brain files from previous step
+# Run: It coopied the brain files from previous step to a new folder
+# since nicms needs a different file structure.
 
-#Requirements:
+#Requirements: None
 
 #Please modify the following things before running:
-
+# -array: change according the number of participants study
+# -projectfolder: change your input folder, needs to be pre-nicms
+# -archive_nicms: change output folder 
 #----------------------------------------------------------------------
 
 projectfolder=/path/to/pre-nicms/folder          #see previous step
