@@ -1,4 +1,4 @@
-In our pipeline, we use nicMS optimized for our scanners, as this provides the best results, as shown here:<br/>
+In our pipeline, we use nicMS optimized for our scanners to segment MS lesions, as this provides the best results and shown here:<br/>
 
 - van Nederpelt DR, Pontillo G, Barrantes-Cepas M, et al. Scanner-specific optimisation of automated lesion segmentation in MS. Neuroimage Clin. 2024;44:103680. doi:[10.1016/j.nicl.2024.103680](10.1016/j.nicl.2024.103680)<br/>
 
