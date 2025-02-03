@@ -47,13 +47,13 @@ module load ANTs/2.4.1             #for registration and N4 bias field
 curdir=`pwd`
 projectfolder=/path/to/your/folder		#please modify 
 rawdata=${projectfolder}/rawdata
-nicmsdir=${projectfolder}/derivatives/nicms
+nicmsdir=${projectfolder}/derivatives/pre-nicms
 mkdir -p $nicmsdir
 
 # To use array parallel processing, you create a .txt file with a list of each subject folder.
 cd ${rawdata}
-ls -d sub-*/ | sed 's:/.*::' > ${curdir}/subjects_nicms.txt
-subjectid=$(sed "${SLURM_ARRAY_TASK_ID}q;d"  ${curdir}/subjects_nicms.txt)
+ls -d sub-*/ | sed 's:/.*::' > ${curdir}/subjects_pre-nicms.txt
+subjectid=$(sed "${SLURM_ARRAY_TASK_ID}q;d"  ${curdir}/subjects_pre-nicms.txt)
 cd ${curdir}
 
 # run preprocessing for all sessions of a subject
