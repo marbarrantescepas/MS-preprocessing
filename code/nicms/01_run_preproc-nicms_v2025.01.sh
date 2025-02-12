@@ -26,7 +26,7 @@
 # space. 
 # Run: It performs N4 bias field correction in T1w and FLAIR independently, 
 # obtains brain mask in T1w sapce, registers FLAIR to T1w space and applies 
-# brain mask to FLAIR. 
+# brain mask to FLAIR to obtain a masked FLAIR. 
 
 #Requirements:
 # 1. Please install FSL, ANTS, and HD-BET, if they are not already in your
