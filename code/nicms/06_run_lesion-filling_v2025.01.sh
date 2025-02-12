@@ -60,7 +60,7 @@ for ses in ${list_ses[@]}; do
 	echo "Starting processing $subjectid $sessionid"
  
         # Define filenames
-        raw_sub_ses_dir=${rawdata}/${suubjectid}/${sessionid}
+        raw_sub_ses_dir=${rawdata}/${subjectid}/${sessionid}
         t1=${raw_sub_ses_dir}/anat/${subjectid}_${sessionid}_T1w.nii.gz
         flair==${raw_sub_ses_dir}/anat/${subjectid}_${sessionid}_FLAIR.nii.gz
         t1_filled_lst=${raw_sub_ses_dir}/anat/${subjectid}_${sessionid}_T1w_filled.nii.gz
