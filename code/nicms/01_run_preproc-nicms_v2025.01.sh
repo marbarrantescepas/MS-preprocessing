@@ -38,8 +38,9 @@
 # https://bids.neuroimaging.io/ 
 
 # Please modify the following things before running:
-# -array: change according the number of participants study
-# -projectfolder: change your input folder, needs to be in BIDS format 
+# -array: change according the number of participants in the study (line 12)
+# module load. adapt to your system (line 47)
+# -projectfolder: change your input folder, needs to be in BIDS format (line 50)
 #----------------------------------------------------------------------
 
 # load modules
@@ -52,7 +53,7 @@ rawdata=${projectfolder}/rawdata
 nicmsdir=${projectfolder}/derivatives/pre-nicms
 mkdir -p $nicmsdir
 
-# To use array parallel processing, you create a .txt file with a list of each subject folder.
+# To use array parallel processing, you create a .txt file with a list of all the subject folders.
 cd ${rawdata}
 ls -d sub-*/ | sed 's:/.*::' > ${curdir}/subjects_pre-nicms.txt
 subjectid=$(sed "${SLURM_ARRAY_TASK_ID}q;d"  ${curdir}/subjects_pre-nicms.txt)
@@ -71,7 +72,8 @@ for ses in ${list_ses[@]}; do
 	session_dir=${subject_dir}/${sessionid}
 	t1=${session_dir}/anat/${subjectid}_${sessionid}_T1w.nii.gz
 	flair=${session_dir}/anat/${subjectid}_${sessionid}_FLAIR.nii.gz
-	
+
+ 	# Detect if required input files are present
 	if [ -e ${t1} ] && [ -e ${flair} ]; then
 		outputdir=${nicmsdir}/${subjectid}/${sessionid}
 		mkdir -p ${outputdir}
