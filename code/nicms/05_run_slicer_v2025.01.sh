@@ -7,10 +7,11 @@
 #updated: 03 February 2025, in process
 #to-do: simplify usage
 
-#Description: this code is meant to open automatically slicer in order
-# to manually correct the lesion masks obtained in the previous step. 
+#Description: this code is meant to open 3DSlicer and load the T2FLAIR and 
+# overlaying lesion mask with optimal parameters for 
+# manual correction of the lesion masks obtained in the previous step. 
 # Input: 
-# Output:
+# Output: 
 # Run: Slicer --python-script run_slicer_v2025.01.sh [SUBJ_ID] &
 
 # Requirements:
