@@ -22,8 +22,9 @@
 #Description: 
 # Input: Brain files otained from previous step
 # Output: Folder includying all brain files from previous step
-# Run: It coopied the brain files from previous step to a new folder
-# since nicms needs a different file structure.
+# Run: It copies image files from the previous step to a new folder 
+# with a new organization structure
+# because nicms needs a different file structure.
 
 #Requirements: None
 
