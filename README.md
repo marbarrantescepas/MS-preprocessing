@@ -9,6 +9,8 @@ This pipeline is designed for structural MRI preprocessing specifically for stud
 * [Example usage](#example-usage)
 
 ## Overview: 
+This repository provides scripts to perform anatomical preprocessing using 2 different lesion segmentation methods (nicMS or LST-AI). 
+![plot](https://github.com/marbarrantescepas/MS-preprocessing/blob/main/pipelines.png)
 
 ### Using nicMS: 
 1. **Previous to lesion segmentation:** `00_run_preproc-nicms_v2025.01.sh`<br/>
