@@ -21,9 +21,10 @@
 
 #Description: 
 # Input: folder containing files derived from nicms
-# Output: binary masks obtained from thresholding and removing clusters 
-# containing less than 5 voxels. 
-# Run: It copies old output, thresholds, removes clusters and binarises.
+# Output: Input files are are reorganized for subsequent steps. Then
+# binary T2FLAIR lesion masks are obtained from thresholding and removing clusters 
+# that contain less than 5 voxels.  
+# Run: It copies old output, thresholds, removes clusters and binarises the lesion mask.
 
 #Requirements:
 # 1. Please install FSL, if they are not already in your system.  
@@ -37,7 +38,7 @@
 #load modules 
 module load fsl/6.0.5.1
 
-# Define input directories anc create outputdir
+# Define input directories and create outputdir
 curdir=`pwd`
 projectfolder=/path/to/your/output/nicms/folder		    #please modify 
 postnicmsdir=/path/to/your/output/postnicms/folder		#please modify 
