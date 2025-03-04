@@ -26,7 +26,8 @@ This repository provides scripts to perform anatomical preprocessing using two d
 Under construction.
 
 ## Installation:
-   
+`git clone https://github.com/marbarrantescepas/MS-preprocessing.git`
+
 ## Usage: 
 To submit scripts of the individual steps to the slurm workload manager (sbatch), use: 
 `sbatch {script_specific_step}.sh` 
