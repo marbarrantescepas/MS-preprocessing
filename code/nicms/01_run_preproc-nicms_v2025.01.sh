@@ -34,12 +34,12 @@
 # 1. Please install FSL, ANTS, and HD-BET, if they are not already in your
 # system. 
 
-# 2. Before use of these scripts, data should be organised in BIDS format, learn more: 
-# https://bids.neuroimaging.io/ 
+# 2. Before use of these scripts, data should be organised in BIDS format, 
+# learn more: https://bids.neuroimaging.io/ 
 
 # Please modify the following things before running:
 # -array: change according the number of participants in the study (line 12)
-# module load. adapt to your system (line 47)
+# -module load. adapt to your system (line 47)
 # -projectfolder: change your input folder, needs to be in BIDS format (line 50)
 #----------------------------------------------------------------------
 
