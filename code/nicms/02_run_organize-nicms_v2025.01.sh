@@ -31,9 +31,9 @@
 #Requirements: None
 
 #Please modify the following things before running:
-# -array: change according the number of participants study
-# -projectfolder: change your input folder, needs to be pre-nicms
-# -archive_nicms: change output folder 
+# -array: change according the number of participants in the study (line 12)
+# -projectfolder: change your input folder, needs to be in BIDS format (line 39)
+# -archive_nicms: change output folder (line 40)
 #----------------------------------------------------------------------
 
 projectfolder=/path/to/pre-nicms/folder          #see previous step
