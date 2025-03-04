@@ -23,6 +23,8 @@ This repository provides scripts to perform anatomical preprocessing using two d
 
 ### Using LST-AI pipeline: 
 
+Under construction.
+
 ## Installation:
    
 ## Example Usage: 
