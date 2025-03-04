@@ -14,12 +14,12 @@ This repository provides scripts to perform anatomical preprocessing using two d
 
 ### Using nicMS pipeline: 
 1. **Previous to lesion segmentation:** `01_run_preproc-nicms_v2025.01.sh` , `02_run_organize-nicms_v2025.01.sh`<br/>
-2. **Lesion segmentation:** `03_lesion-seg_nicms_v2025.01.sh`, `04_postproc-nicms_v2025.01.sh`
-Manual correction, use `05_run_slicer_v2025.01.sh` to open automatically scans in 3D Slicer. 
-3. **Lesion filling:** `06_run_lesion-filling_v2025.01.sh`
-4. **FreeSurfer cross-sectionally:** `07_run_freesurfer-cross_v2025.01.sh`
-5. **Quality Check FreeSurfer:** `08_run_fsqc_v2025.01.sh`
-Manual correction, for further information on FreeSurfer manual edits, check the FreeSurfer webpage. 
+2. **Lesion segmentation:** `03_lesion-seg_nicms_v2025.01.sh`, `04_postproc-nicms_v2025.01.sh`<br/>
+Manual correction, use `05_run_slicer_v2025.01.sh` to open automatically scans in 3D Slicer.<br/>
+3. **Lesion filling:** `06_run_lesion-filling_v2025.01.sh` <br/>
+4. **FreeSurfer cross-sectionally:** `07_run_freesurfer-cross_v2025.01.sh` <br/>
+5. **Quality Check FreeSurfer:** `08_run_fsqc_v2025.01.sh` <br/>
+Manual correction, for further information on FreeSurfer manual edits, check the FreeSurfer webpage. <br/>
 
 ### Using LST-AI pipeline: 
 
