@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Below block for SLURM users. If you are not a SLURM user, remove this block 
+#and change below references to SLURM for parallel processing. 
 #SBATCH --job-name=postnicms        	#a name for your job
 #SBATCH --mem=1G                    	#max memory per node
 #SBATCH --partition=luna-cpu-short    	#using luna short queue
