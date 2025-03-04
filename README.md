@@ -4,7 +4,7 @@ This pipeline is designed for structural MRI preprocessing specifically for stud
 ## Contents
 * [Overview](#overview)
 * [Installation](#installation)
-* [Example usage](#example-usage)
+* [Usage](#usage)
 * [Citation](#citation)
 * [Contact](#contact)
 
@@ -27,7 +27,7 @@ Under construction.
 
 ## Installation:
    
-## Example Usage: 
+## Usage: 
 To submit scripts of the individual steps to the slurm workload manager (sbatch), use: 
 `sbatch {script_specific_step}.sh` 
 Please make sure to modify all the necessary parameters before running, there are some exceptions: 
