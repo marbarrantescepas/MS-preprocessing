@@ -36,7 +36,7 @@ Please make sure to modify all the necessary parameters before running, there ar
 ## Citation
 Barrantes-Cepas M., Noteboom S., Jelgerhuis J., Fuchs T., Koubiyr I., Schoonheim M.M. (2025). Structural MRI pipeline for Multiple Sclerosis. GitHub. https://github.com/marbarrantescepas/MS-preprocessing<br/>
 
-### Please don't forget to cite: 
+### Software used: 
 - FSL: M. Jenkinson, C.F. Beckmann, T.E. Behrens, M.W. Woolrich, S.M. Smith. FSL. NeuroImage, 62:782-90, 2012
 - ANTs: Isensee F, Schell M, Pflueger I, et al. Automated brain extraction of multisequence MRI using artificial neural networks. Hum Brain Mapp. 2019;40(17):4952-4964. doi:10.1002/hbm.24750 https://github.com/ANTsX/ANTs
 - nicMS: Valverde S, Salem M, Cabezas M, et al. One-shot domain adaptation in multiple sclerosis lesion segmentation using convolutional neural networks. Neuroimage Clin. 2019;21:101638. doi:10.1016/j.nicl.2018.101638
