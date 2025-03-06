@@ -23,7 +23,7 @@
 #Description: 
 # Input: T1w filled 
 # Output: FreeSurfer files.
-# Run: 
+# Run: make sure script folder run 
 
 #Requirements:
 # 1. Please install FreeSurfer if not already install in your system.
@@ -37,7 +37,7 @@
 module load FreeSurfer/7.3.2-centos8_x86_64
 
 # Define paths to data 
-curdir=`pwd`
+curdir=`pwd` 	#make sure to run inside scripts folder
 projectfolder=/path/to/project/folder
 rawdata=${projectfolder}/rawdata
 nicmsdir=${projectfolder}/derivatives/nicms
@@ -46,6 +46,7 @@ fsdir=${projectfolder}/derivatives/freesurfer
 # To use array parallel processing, create a .txt file with a list of each subject folder.
 cd ${nicmsdir}
 ls -d sub-*/ | sed 's:/.*::' > ${curdir}/subjects-freesurfer.txt
+#replace line above if using a different job manager (slurm)
 subjectid=$(sed "${SLURM_ARRAY_TASK_ID}q;d" ${curdir}/subjects-freesurfer.txt)
 cd ${curdir}
 
@@ -59,22 +60,25 @@ for ses in ${list_ses[@]}; do
         session_dir=${subject_dir}/${sessionid}
 	echo "Starting processing $subjectid $sessionid"
 
+	# define input files for freesurfer
 	t1_filled=${nicdir}/$subjectid/$sessionid/${subjectid}_${sessionid}_T1w_filled.nii.gz
 	t1_raw=${rawdata}/${subjectid}/${sessionid}/${subjectid}_${sessionid}_T1w.nii.gz
  
 	SUBJECTS_DIR=${fsdir}/${subjectid}
 	mkdir -p ${SUBJECTS_DIR}
 	echo $SUBJECTS_DIR
- 
+
+ 	# if T1w filled doesn't exist, then use original T1w
 	if [ -e $t1_filled ]; then
 		t1=${t1_filled}
 	else 
 		t1=${t1_raw}
 	fi 
 
+	# run Freesurfer using t1 as input
 	if [ ! -e ${SUBJECTS_DIR}/$sessionid ] && [ -e ${t1} ]; then
 		echo "Start running recon-all ${SUBJECTS_DIR}/${sessionid}"
-		recon-all -subjid ${sess} -i ${t1} -all
+		recon-all -subjid ${sess} -i ${t1} -all #if want to add brain mask, add -xmask $brain_mask to this line
 	fi
 
 done 
