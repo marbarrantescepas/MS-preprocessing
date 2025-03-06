@@ -23,7 +23,8 @@
 #Description: 
 # Input: Lesion mask (corrected) and T1w image. 
 # Output: T1w with lesion filled. 
-# Run: It needs to run lesion segmentation LST-LGA to obtain intermediate
+# Run: Inside script folder, TBF
+#It needs to run lesion segmentation LST-LGA to obtain intermediate
 # files for next lesion filling the T1w. 
 
 #Requirements:
@@ -39,8 +40,8 @@
 module load matlab/R2022b
 module load matlab-toolbox/spm12/r7771
 
-# Define input directories anc create outputdir
-curdir=`pwd`
+# Define input directories and create outputdir
+curdir=`pwd` 		#pressumes you are in the script directory
 projectfolder=/path/to/project/folder
 rawdata=${projectfolder}/rawdata
 nicmsdir=${projectfolder}/derivatives/nicms
@@ -61,20 +62,20 @@ for ses in ${list_ses[@]}; do
         session_dir=${subject_dir}/${sessionid}
 	echo "Starting processing $subjectid $sessionid"
  
-        # Define filenames
+        # Define input and output filenames
         raw_sub_ses_dir=${rawdata}/${subjectid}/${sessionid}
         t1=${raw_sub_ses_dir}/anat/${subjectid}_${sessionid}_T1w.nii.gz
         flair==${raw_sub_ses_dir}/anat/${subjectid}_${sessionid}_FLAIR.nii.gz
         t1_filled_lst=${raw_sub_ses_dir}/anat/${subjectid}_${sessionid}_T1w_filled.nii.gz
 
-        lesion_prefix=${session_dir}/anat/${subjectid}_${sessionid}_ms112_mweeda_full_nicmslesions_prob_1_thr04_c5
+        lesion_prefix=${session_dir}/anat/${subjectid}_${sessionid}_ms112_mweeda_full_nicmslesions_prob_1_thr04_c5 #naming convention specific to our center
         lesion_nicms=${lesion_prefix}.nii.gz
         lesion_qc=${lesion_prefix}_qc.nii.gz
-        lesion_qc2=${lesion_prefix}_qc2.nii.gz
-        lesion_qc3=${lesion_prefix}_qc3.nii.gz
+        lesion_qc2=${lesion_prefix}_qc2.nii.gz    #only needed if multiple quality check outputs
+        lesion_qc3=${lesion_prefix}_qc3.nii.gz    #only needed if multiple quality check outputs
         lesion_mask=${session_dir}/${subjectid}_${sessionid}_lesion-mask.nii.gz
 
-        # Create soft link to nicms or qc lesion mask
+        # Create soft link to nicms raw lesion mask or most recent qc lesion mask
         if [ ! -e ${lesion_mask} ]; then
             if [ -e ${lesion_qc3} ]; then
                 lesion=${lesion_qc3}
@@ -102,6 +103,7 @@ for ses in ${list_ses[@]}; do
             cp ${t1} ${session_dir}/anat/${subjectid}_${sessionid}_T1w.nii.gz
             
             if [ ! -e ${flair} ]; then
+	    	#use t1 as flair if flair doesnt exist
                 cp ${t1} ${session_dir}/${subjectid}_${sessionid}_FLAIR.nii.gz
             else
                 cp ${flair} ${session_dir}/${subjectid}_${sessionid}_FLAIR.nii.gz
@@ -119,15 +121,16 @@ for ses in ${list_ses[@]}; do
                 gunzip ${session_dir}/${subjectid}_${sessionid}_lesion_lst.nii.gz
             fi
 
+	    #define output file LGA (lesion segmentation algorithm)
             ples_flair=${session_dir}/ples_lga_0.3_rm${subjid}_${sess}_FLAIR.nii
 
-            # Run LGA (otherwise LST lesfill crashes)
+            # Run LGA (otherwise LST lesion filling crashes, though lesion mask is replaced)
             if [ ! -e ${ples_flair}.gz ] || [ ! -e ${t1_filled_lst} ]; then
                 logname=${session_dir}/${subjectid}_${sessionid}_lst_lga
                 matlab -nodisplay –nojvm -nosplash -logfile "${logname}.log"  \
                 -r "addpath('/opt/aumc-apps/matlab/toolbox/spm12_r7771/toolbox/LST'); ps_LST_lga('${t1_lst}', '${flair_lst}' ); exit"  <  /dev/null 1> ${logname}.stdout 2> ${logname}.stderr
                 gzip ${ples_flair}
-                mv ${lesion_mask_lst} ${ples_flair}
+                mv ${lesion_mask_lst} ${ples_flair} #replacing lst lesion mask for nicms lesion mask
             fi
             
             # Filling lesions... 
@@ -138,7 +141,8 @@ for ses in ${list_ses[@]}; do
                 -r "addpath('/opt/aumc-apps/matlab/toolbox/spm12_r7771/toolbox/LST'); ps_LST_lesfill( '${t1_lst}','${ples_flair}',false,false ); exit"  <  /dev/null 1> ${logname}.stdout 2> ${logname}.stderr
                 gzip ${session_dir}/${subjectid}_${sessionid}_T1w_filled_lga_0.3_rm${subjectid}_${sessionid}_FLAIR.nii
                 mv ${session_dir}/anat/${subjectid}_${sessionid}_T1w_filled_lga_0.3_rm${subjectid}_${sessionid}_FLAIR.nii.gz ${t1_filled_lst}
-                rm -r ${session_dir}/anat/LST_lga_0.3_rm${subjectid}_${sessionid}_FLAIR
+                #removing intermediate files
+		rm -r ${session_dir}/anat/LST_lga_0.3_rm${subjectid}_${sessionid}_FLAIR
                 rm ${session_dir}/anat/*.nii ${session_dir}/anat/*.log ${session_dir}/anat/*.stderr ${session_dir}/anat/*.stdout ${session_dir}/anat/*.html
             fi
         fi 
