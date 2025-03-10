@@ -22,18 +22,20 @@
 #to-do: simplify usage 
 
 #Description: 
-# Input: Brain files otained from previous step
-# Output: Folder includying all brain files from previous step
+# Input: T1w and FLAIR images with N4 bias field correction and skull-stripped. 
+# See previous step for more information. 
+
+# Output: T1w and FLAIR images with N4 bias field correction and skull-stripped
+# in a different folder structure needed to run nicMS lesion segmentation. 
 # Run: It copies image files from the previous step to a new folder 
-# with a new organization structure
-# because nicms needs a different file structure.
+# with a new organization structure because nicms needs a different file structure.
 
 #Requirements: None
 
 #Please modify the following things before running:
 # -array: change according the number of participants in the study (line 12)
-# -projectfolder: change your input folder, needs to be in BIDS format (line 39)
-# -archive_nicms: change output folder (line 40)
+# -projectfolder: change your input folder, needs to be in BIDS format (line 41)
+# -archive_nicms: change output folder (line 42)
 #----------------------------------------------------------------------
 
 projectfolder=/path/to/pre-nicms/folder          #see previous step
