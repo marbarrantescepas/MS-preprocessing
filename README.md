@@ -5,6 +5,7 @@ This pipeline is designed for structural MRI preprocessing specifically for stud
 * [Overview](#overview)
 * [Installation](#installation)
 * [Usage](#usage)
+* [Contribute](#contribute)
 * [Citation](#citation)
 * [Contact](#contact)
 
@@ -33,6 +34,9 @@ To submit scripts of the individual steps to the slurm workload manager (sbatch)
 `sbatch {script_specific_step}.sh` 
 Please make sure to modify all the necessary parameters before running, there are some exceptions: 
 `05_run_slicer_v2025.01.sh`, see usage in the script. 
+
+## Contribution
+We welcome contributions to this GitHub repository. If you'd like to contribute, you can either open an issue to share your suggestions, and we'll review them, or submit a pull request directly. Thank you for your support! 
 
 ## Citation
 Barrantes-Cepas M., Noteboom S., Jelgerhuis J., Fuchs T., Koubiyr I., Schoonheim M.M. (2025). Structural MRI pipeline for Multiple Sclerosis. GitHub. https://github.com/marbarrantescepas/MS-preprocessing<br/>
