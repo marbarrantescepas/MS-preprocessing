@@ -2,28 +2,31 @@
 #   OPEN FLAIR, T1w, BRAIN + LESION SEGMENTATION MASK USING SLICER
 #======================================================================
 
-#@author: julia r. jelgeruis, lonneke bos, mar barrantes cepas
+#@author: julia r. jelgeruis, mar barrantes cepas
 #@email: m.barrantescepas@amsterdamumc.nl
 #updated: 03 February 2025, in process
 #to-do: simplify usage
 
 #Description: this code is meant to open 3DSlicer and load the T2FLAIR and 
-# overlaying lesion mask with optimal parameters for 
-# manual correction of the lesion masks obtained in the previous step. This
-# step can also be done fully manually if desired. 
-# Input: 
-# Output: 
-# Run: Slicer --python-script run_slicer_v2025.01.sh [SUBJ_ID] &
+# overlaying lesion mask with optimal parameters for manual correction of 
+# the lesion masks obtained in the previous step. This step can also be done 
+# fully manually if desired. 
+
+# Input: subject and session id
+# Output: it will open t1, flair, lesion and brain mask in 3DSlicer to
+# perform manual correction lesion mask 
+# Run: Slicer --python-script run_slicer_v2025.01.sh [SUBJ_ID] [SESJ_ID] &
 
 # Requirements:
 # 1. Please install FSL and Slicer, if they are not already in your system. 
 
-# 2. Type in the terminal: "ml fsl" and "ml slicer"
+# 2. Type in the terminal: "ml fsl" and "ml slicer" (if using modules)
 
-# 3. Data should be structured in a determined way, check previous steps.  
+# 3. Change file names and input directory, see more below.   
 
 #Please modify the following things before running: 
-# -BASE : please modify input directory
+# -BASE : please modify input directory (line 44)
+# -T1w, FLAIR, lesion and brain mask: modify paths and file names (line 60-63)
 #-----------------------------------------------------------------------
 
 # import libraries
@@ -35,6 +38,7 @@ import subprocess
 # Instantiate the parser
 parser = argparse.ArgumentParser(description='Optional app description')
 parser.add_argument('subjectID', type=str, help='ID of subject')
+parser.add_argument('sessionID', type=str, help='ID of session')
 args = parser.parse_args()
 
 # Set base directory
@@ -42,6 +46,7 @@ BASE = "/path/to/your/directory/"  #please modify
 
 # Get arguments
 SUBJ = args.subjectID
+SESJ = args.sessionID
 
 # Concatenate base and arguments
 DIR = os.path.join(BASE)
@@ -52,10 +57,10 @@ if os.path.exists(DIR) == False:
    sys.exit()
 
 # Create file paths necessary
-T1_path = os.path.join(DIR, SUBJ+"/ses-T0/tmp/sub-X_ses-Y_space-mni_T1w.nii.gz")
-FLAIR_path = os.path.join(DIR, SUBJ+"/ses-T0/tmp/sub-X_ses-Y_space-mni_FLAIR.nii.gz")
-LESION_path = os.path.join(DIR, SUBJ+"/ses-T0/tmp/sub-X_ses-Y_space-mni_seg-lst.nii.gz")
-BRAIN_path = os.path.join(DIR, SUBJ+"/ses-T0/tmp/sub-X_ses-Y_space-mni_brainmask.nii.gz")
+T1_path = os.path.join(DIR, SUBJ+"/"+SESJ+"/"+SUBJ+"_"+SESJ+"_T1w_brain.nii.gz") #please modify if using different file name
+FLAIR_path = os.path.join(DIR, SUBJ+"/"+SESJ+"/"+SUBJ+"_"+SESJ+"_FLAIR_brain.nii.gz") #please modify if using different file name
+LESION_path = os.path.join(DIR, SUBJ+"/"+SESJ+"/"+SUBJ+"_"+SESJ+"_lesion_mask.nii.gz") #please modify if using different file name
+BRAIN_path = os.path.join(DIR, SUBJ+"/"+SESJ+"/"+SUBJ+"_"+SESJ+"_brain_mask.nii.gz") #please modify if using different file name
 
 ## Slicer
 # Set images linked upon opening
