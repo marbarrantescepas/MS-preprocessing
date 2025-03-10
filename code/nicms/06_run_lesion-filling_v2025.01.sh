@@ -21,19 +21,18 @@
 #to-do: simplify usage 
 
 #Description: 
-# Input: Lesion mask (corrected) and T1w image. 
+# Input: Binary lesion mask (corrected) and T1w image. 
 # Output: T1w with lesion filled. 
-# Run: Inside script folder, TBF
-#It needs to run lesion segmentation LST-LGA to obtain intermediate
-# files for next lesion filling the T1w. 
+# Run: It needs to run lesion segmentation LST-LGA to obtain intermediate
+# files in order to perform the lesion filling on T1w image. 
 
 #Requirements:
 # 1. Please install lst, https://www.applied-statistics.de/lst.html, if 
 # not already install in your system.
 
 # Please modify the following things before running:
-# -array: change according the number of participants study
-# -projectfolder: change your input folder, needs to be in BIDS format 
+# -array: change according the number of participants study (line 12)
+# -projectfolder: change your input folder, needs to be in BIDS format (line 44)
 #----------------------------------------------------------------------
 
 # load modules
