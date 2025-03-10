@@ -22,19 +22,20 @@
 #to-do: simplify usage 
 
 #Description: 
-# Input: folder containing files derived from nicms
-# Output: Input files are are reorganized for subsequent steps. Then
-# binary T2FLAIR lesion masks are obtained from thresholding and removing clusters 
-# that contain less than 5 voxels.  
+# Input: probability mask derived from nicMS lesions, in this script is 
+# called -> _ms112_mweeda_full_nicmslesions_prob_1.nii.gz
+# If you are using a different name, please modify the input file. 
+# Output: Binary T2FLAIR lesion masks are obtained from thresholding and 
+# removing clusters that contain less than 5 voxels.  
 # Run: It copies old output, thresholds, removes clusters and binarises the lesion mask.
 
 #Requirements:
 # 1. Please install FSL, if they are not already in your system.  
 
 # Please modify the following things before running:
-# -array: change according the number of participants study
-# -projectfolder: change your input folder, where nicms output is stored
-# -postnicmsdir: change output folder where to store the data. 
+# -array: change according the number of participants study (line 12)
+# -projectfolder: change your input folder, where nicms output is stored (line 46)
+# -postnicmsdir: change output folder where to store the data. (line 47)
 #----------------------------------------------------------------------
 
 #load modules 
