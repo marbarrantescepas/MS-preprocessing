@@ -23,14 +23,14 @@
 #Description: 
 # Input: T1w filled 
 # Output: FreeSurfer files.
-# Run: make sure script folder run 
+# Run: make sure to run inside scripts folder
 
 #Requirements:
 # 1. Please install FreeSurfer if not already install in your system.
 
 # Please modify the following things before running:
-# -array: change according the number of participants study
-# -projectfolder: change your input folder, needs to be in BIDS format 
+# -array: change according the number of participants study (line 12)
+# -projectfolder: change your input folder, needs to be in BIDS format (line 41)
 #----------------------------------------------------------------------
 
 # load modules
