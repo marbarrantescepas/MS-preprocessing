@@ -31,26 +31,18 @@
 
 # Requirements: 
 # Please install the fsqc tool https://github.com/Deep-MI/fsqc
-# If not already install in your system.
+# If not already install in your system. 
 
 #Please change the following things:
-# - array: change according the number of participants study
-# - conda environment
-# - dir: change your input folder
-# - output: change your output folder
-# - path to the run_fsqc tool
-
+# - array: change according the number of participants study (line 12)
+# - dir & output folder: change your input and output folders (line 44 & 45)
+# - change path to fsqc tool if using different system (line 61)
 #---------------------------------------------------------------------
-
-# Load modules
-module load FreeSurfer/7.3.2-centos8_x86_64
-module load Anaconda3
-conda activate /home/anw/mbarrantescepas/apps/python-env/env2/ #please modify
 
 # Define paths to data
 curdir=`pwd`
-dir=/data/anw/anw-gold/KNW/m.barrace/programs/programs-bids/derivatives/freesurfer #please modify
-output=/scratch/anw/mbarrantescepas/prograMS/freesurfer_qc #please modify
+dir=/path/to/freesurfer           #please modify
+output=/path/to/freesurfer_qc     #please modify
 
 # To use array parallel processing, you create a .txt file with a list of each subject folder.
 cd ${dir}
@@ -66,13 +58,12 @@ for sessdir in ${subject_dir}/*; do
     sess=${sessdir##/*/}
 
     if [ ! -d ${output}/${subjid} ]; then 
-        /home/anw/mbarrantescepas/apps/fsqc/fsqc/run_fsqc --subjects_dir ${subject_dir} --output_dir ${output}/${subjid} \
+          /opt/aumc-containers/singularity/fsqc/fsqc-v2.1.1.sif --subjects_dir ${subject_dir} --output_dir ${output}/${subjid} \
         --screenshots_overlay none --screenshots-html --screenshots_layout 15 3 \
         --screenshots_views  x=-65 y=-65 z=-40 x=-60 y=-60 z=-35 x=-50 y=-50 z=-30 x=-40 y=-40 z=-40 x=-30 y=-30 z=-25 x=-20 y=-20 z=-20 \
         x=-10 y=-10 z=-10 x=0 y=0 z=0 x=10 y=10 z=10 x=20 y=20 z=20 x=30 y=30 z=30 x=40 y=40 z=35 x=50 y=50 z=40 x=50 y=50 z=45 x=60 y=60 z=50
     fi 
 done
-conda deactivate 
 
 #---------------------------------------------------------------------
 # References
