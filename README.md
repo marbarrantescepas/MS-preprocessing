@@ -40,7 +40,7 @@ Please make sure to modify all the necessary parameters before running, there ar
 We welcome contributions to this GitHub repository. If you'd like to contribute, you can either open an issue to share your suggestions, and we'll review them, or submit a pull request directly. Thank you for your support! 
 
 ## Citation
-Barrantes-Cepas M., Noteboom S., Jelgerhuis J., Fuchs T., Koubiyr I., Schoonheim M.M. (2025). Structural MRI pipeline for Multiple Sclerosis. GitHub. https://github.com/marbarrantescepas/MS-preprocessing<br/>
+Barrantes-Cepas M., Noteboom S., van Nederpelt D.R., Barkhof F., Steenwijk M.D., Jelgerhuis J., Fuchs T., Koubiyr I., Schoonheim M.M. (2025). Structural MRI pipeline for Multiple Sclerosis. GitHub. https://github.com/marbarrantescepas/MS-preprocessing<br/>
 
 ### Software used: 
 - **FSL**: M. Jenkinson, C.F. Beckmann, T.E. Behrens, M.W. Woolrich, S.M. Smith. FSL. NeuroImage, 62:782-90, 2012
