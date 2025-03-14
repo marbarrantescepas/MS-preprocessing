@@ -52,7 +52,7 @@ cd ${curdir}
 
 # run preprocessing for all sessions of a subject
 subject_dir=${nicmsdir}/$subjectid
-list_ses=($basename -a $(ls -d -1 $(subject_dir/ses-*)))
+list_ses=($basename $(ls -d -1 $subject_dir/ses-*))
 
 for ses in ${list_ses[@]}; do
 
