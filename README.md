@@ -23,9 +23,15 @@ We recommend performing quality checks after every crucial step. However, we onl
 5. **Quality Check FreeSurfer:** `08_run_fsqc_v2025.01.sh` <br/>
 6. **Manual correction FS:** for further information on FreeSurfer manual edits, check the FreeSurfer webpage. <br/>
 
-### Using LST-AI pipeline: 
+### Using LST-AI pipeline (option preferred): 
 
-Under construction.
+1. **Lesion segmentation:** `01_run_lst-ai_v2025.01.sh`<br/>
+3. **Manual correction:** use `02_run_slicer_v2025.01.py` to open automatically scans in 3D Slicer.<br/>
+3. **Lesion filling:** `03_run_lesion-filling_v2025.03.sh` <br/>
+4. **Screencaptures filling:** use `04_python_screenshots.py` to create automatically screencaptures, and merge into html file using `05_png2html_report.bash`.<br/>
+5. **FreeSurfer cross-sectionally:** `06_run_freesurfer-cross_v2025.03.sh` <br/>
+6. **Quality Check FreeSurfer:** `07_run_fsqc_v2025.01.sh` <br/>
+7. **Manual correction FS:** for further information on FreeSurfer manual edits, check the FreeSurfer webpage. <br/>
 
 ## Installation:
 `git clone https://github.com/marbarrantescepas/MS-preprocessing.git`
