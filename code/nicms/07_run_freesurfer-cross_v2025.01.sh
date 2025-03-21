@@ -18,7 +18,7 @@
 #@author: samantha noteboom, mar barrantes cepas
 #@email: m.barrantescepas@amsterdamumc.nl
 #updated; 03 february 2025, works
-#to-do: simplify usage, add hd-bet mask as input, finish slides
+#to-do: simplify usage, add hd-bet mask as input
 
 #Description: 
 # Input: T1w filled 
