@@ -10,7 +10,7 @@
 #SBATCH --nice=4000                     #priority jobs 
 #SBATCH --qos=anw-cpu                   
 #SBATCH --output=slurm_logs/slurm-%x.%j_%A_%a.out  #store log files
-#SBATCH --array=1-435%20                #first-last%parallel subj
+#SBATCH --array=1-XX%YY                #first-last%parallel subj
 
 #======================================================================
 #              VISUAL QUALITY CHECK FREESURFER DATA
