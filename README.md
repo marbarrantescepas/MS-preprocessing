@@ -1,6 +1,8 @@
 # Structural MRI Preprocessing Pipeline for Multiple Sclerosis
 This pipeline is designed for structural MRI preprocessing specifically for studies related to multiple sclerosis (MS) using T1-weighted (T1w) and T2-weighted fluid-attenuated inversion-recovery (FLAIR) images. It includes several preprocessing steps to automatically segment and fill MS lesions, as well as, to perform FreeSurfer preprocessing and quality check (QC) for each step.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15745212.svg)](https://doi.org/10.5281/zenodo.15745212)
+
 ## Contents
 * [Overview](#overview)
 * [Installation](#installation)
