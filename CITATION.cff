@@ -1,0 +1,7 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors: Barrantes-Cepas M., Noteboom S., van Nederpelt D.R., Barkhof F., Steenwijk M.D., Jelgerhuis J., Fuchs T., Koubiyr I., Schoonheim M.M.
+orcid: https://orcid.org/0009-0007-4305-6118
+title:marbarrantescepas/MS-preprocessing: v1.1.0
+version: v1.1.0
+date-released: 2025-06-26
